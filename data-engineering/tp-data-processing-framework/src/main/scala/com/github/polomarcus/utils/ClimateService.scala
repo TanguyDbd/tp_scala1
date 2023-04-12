@@ -23,4 +23,5 @@ object ClimateService {
         .findFirstIn(description.toLowerCase)
         .isDefined
     }
+  def
 }

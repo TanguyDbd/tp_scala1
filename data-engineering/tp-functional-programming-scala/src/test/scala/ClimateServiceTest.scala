@@ -31,6 +31,35 @@ class ClimateServiceTest extends AnyFunSuite {
 
   //@TODO
   test("filterDecemberData") {
-    assert(true == false)
+    val firstElement = CO2Record(2001, 3, 316.19)
+    val secondElement = CO2Record(2002, 4, 283.73)
+    val thirdElement = CO2Record(2003, 12, 175.98)
+
+    val List1 = List(Some(firstElement),Some(secondElement),Some(thirdElement))
+    val output = List(firstElement,secondElement)
+
+    assert(ClimateService.filterDecemberData(List1) == output)
+  }
+
+  test("getMinMaxByYear") {
+    val firstElement = CO2Record(2001, 3, 316.1)
+    val secondElement = CO2Record(2001, 4, 342.6)
+    val thirdElement = CO2Record(2003, 12, 333.3)
+
+    val List1 = List(firstElement, secondElement, thirdElement)
+    val output = (316.1, 342.6)
+
+    assert(ClimateService.getMinMaxByYear(List1, year=2001) == output)
+  }
+
+  test("getMinMax") {
+    val firstElement = CO2Record(2001, 3, 316.1)
+    val secondElement = CO2Record(2003, 4, 345.3)
+    val thirdElement = CO2Record(2003, 12, 325.9)
+
+    val List1 = List(firstElement, secondElement, thirdElement)
+    val output = (316.1, 345.3)
+
+    assert(ClimateService.getMinMax(List1) == output)
   }
 }
